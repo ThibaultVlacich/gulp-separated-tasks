@@ -1,6 +1,6 @@
 # Gulp: Separated Tasks
 
-This project demonstrate how to easily separate gulp tasks into different js files.
+This project demonstrates how to easily separate gulp tasks into different js files.
 Every file in the `gulpfile.js/tasks` folder is automatically loaded.
 
 ## Pre-requirements
