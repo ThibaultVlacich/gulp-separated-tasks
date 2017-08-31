@@ -1,0 +1,19 @@
+{
+  "src": "./sources",
+  "dest": "./build",
+
+  "images": {
+    "src": "images",
+    "dest": "images"
+  },
+
+  "javascripts": {
+    "src": "js",
+    "dest": "js"
+  },
+
+  "sass": {
+    "src": "sass",
+    "dest": "css"
+  }
+}

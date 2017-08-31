@@ -1,0 +1,9 @@
+@import "variables";
+
+.test {
+    color: $black;
+
+    &.color {
+        color: $main-color;
+    }
+}
