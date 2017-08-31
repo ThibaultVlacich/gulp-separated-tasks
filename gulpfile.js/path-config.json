@@ -2,6 +2,13 @@
   "src": "./sources",
   "dest": "./build",
 
+  "copy": [
+    {
+      "src": "libs/**/*",
+      "dest": "libs"
+    }
+  ],
+
   "images": {
     "src": "images",
     "dest": "images"
