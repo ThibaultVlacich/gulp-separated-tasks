@@ -10,6 +10,7 @@
         "gulp-imagemin": "^3.3.0",
         "gulp-sass": "^3.1.0",
         "gulp-sequence": "^0.4.6",
+        "gulp-sourcemaps": "^2.6.1",
         "gulp-tap": "^1.0.1",
         "gulp-uglify": "^3.0.0",
         "gulp-watch": "^4.3.11",

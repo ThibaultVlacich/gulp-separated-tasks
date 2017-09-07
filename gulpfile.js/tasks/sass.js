@@ -6,6 +6,7 @@ const gulp         = require('gulp')
 const gulpif       = require('gulp-if')
 const path         = require('path')
 const sass         = require('gulp-sass')
+const sourcemaps   = require('gulp-sourcemaps')
 
 var sassTask = function() {
     var paths = {
@@ -14,9 +15,11 @@ var sassTask = function() {
     }
 
     return gulp.src(paths.src)
+        .pipe(gulpif(!global.production, sourcemaps.init()))
         .pipe(sass()).on('error', sass.logError)
         .pipe(autoprefixer())
         .pipe(gulpif(global.production, cssnano()))
+        .pipe(gulpif(!global.production, sourcemaps.write()))
         .pipe(gulp.dest(paths.dest))
 }
 

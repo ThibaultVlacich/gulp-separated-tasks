@@ -6,6 +6,7 @@ const gulp       = require('gulp')
 const gulpif     = require('gulp-if')
 const path       = require('path')
 const source     = require('vinyl-source-stream')
+const sourcemaps = require('gulp-sourcemaps')
 const tap        = require('gulp-tap')
 const uglify     = require('gulp-uglify')
 
@@ -21,7 +22,9 @@ var browserifyTask = function() {
                 .bundle()
         }))
         .pipe(buffer())
+        .pipe(gulpif(!global.production, sourcemaps.init()))
         .pipe(gulpif(global.production, uglify()))
+        .pipe(gulpif(!global.production, sourcemaps.write()))
         .pipe(gulp.dest(paths.dest))
 }
 
