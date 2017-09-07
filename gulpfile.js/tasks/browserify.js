@@ -5,7 +5,6 @@ const buffer     = require('gulp-buffer')
 const gulp       = require('gulp')
 const gulpif     = require('gulp-if')
 const path       = require('path')
-const source     = require('vinyl-source-stream')
 const sourcemaps = require('gulp-sourcemaps')
 const tap        = require('gulp-tap')
 const uglify     = require('gulp-uglify')
@@ -18,8 +17,7 @@ var browserifyTask = function() {
 
     return gulp.src(paths.src, {read: false})
         .pipe(tap(function (file) {
-            file.contents = browserify(file.path, {debug: true})
-                .bundle()
+            file.contents = browserify(file.path, {debug: true}).bundle()
         }))
         .pipe(buffer())
         .pipe(gulpif(!global.production, sourcemaps.init()))
