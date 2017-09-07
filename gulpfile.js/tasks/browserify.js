@@ -3,9 +3,11 @@ if(!PATH_CONFIG.javascripts) return
 const browserify = require('browserify')
 const buffer     = require('gulp-buffer')
 const gulp       = require('gulp')
+const gulpif     = require('gulp-if')
 const path       = require('path')
 const source     = require('vinyl-source-stream')
 const tap        = require('gulp-tap')
+const uglify     = require('gulp-uglify')
 
 var browserifyTask = function() {
     var paths = {
@@ -19,6 +21,7 @@ var browserifyTask = function() {
                 .bundle()
         }))
         .pipe(buffer())
+        .pipe(gulpif(global.production, uglify()))
         .pipe(gulp.dest(paths.dest))
 }
 

@@ -9,6 +9,9 @@ const path = require('path')
 const gulp = require('gulp')
 const requireDir = require('require-dir')
 
+// Do not build in production by default
+global.production = false
+
 // Fallback for windows
 process.env.PWD = process.env.PWD || process.cwd()
 
