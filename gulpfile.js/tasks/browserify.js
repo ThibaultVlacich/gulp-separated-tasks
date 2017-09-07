@@ -1,5 +1,6 @@
 if(!PATH_CONFIG.javascripts) return
 
+const babelify   = require('babelify')
 const browserify = require('browserify')
 const buffer     = require('gulp-buffer')
 const gulp       = require('gulp')
@@ -17,7 +18,9 @@ var browserifyTask = function() {
 
     return gulp.src(paths.src, {read: false})
         .pipe(tap(function (file) {
-            file.contents = browserify(file.path, {debug: true}).bundle()
+            file.contents = browserify(file.path, {debug: true})
+                .transform(babelify, {presets: ['es2015']})
+                .bundle()
         }))
         .pipe(buffer())
         .pipe(gulpif(!global.production, sourcemaps.init()))
