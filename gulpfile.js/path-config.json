@@ -10,17 +10,17 @@
   ],
 
   "images": {
-    "src": "images",
+    "src": "images/**/*",
     "dest": "images"
   },
 
   "javascripts": {
-    "src": "js",
+    "src": "js/**/*.js",
     "dest": "js"
   },
 
   "sass": {
-    "src": "sass",
+    "src": "sass/**/*.s+(a|c)ss",
     "dest": "css"
   }
 }

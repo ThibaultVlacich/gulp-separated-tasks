@@ -6,7 +6,7 @@ const path     = require('path')
 
 var imageminTask = function() {
     var paths = {
-        src: path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.images.src, '**/*'),
+        src: path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.images.src),
         dest: path.resolve(process.env.PWD, PATH_CONFIG.dest, PATH_CONFIG.images.dest)
     }
 
