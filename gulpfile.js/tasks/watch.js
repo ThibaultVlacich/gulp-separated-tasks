@@ -4,6 +4,8 @@ const watch = require('gulp-watch')
 
 // And now my watch begins...
 var watchTask = function() {
+    gulp.start('build')
+    
     var watchableTasks = ['browserify', 'imagemin', 'sass']
 
     function getTaskPathFor(taskName) {
@@ -22,11 +24,8 @@ var watchTask = function() {
     watchableTasks.forEach(function(taskName) {
         var taskPath = getTaskPathFor(taskName)
         var srcPath = path.resolve(process.env.PWD, PATH_CONFIG.src, taskPath.src)
-        var globPattern = '**/*'
 
-        watch(path.join(srcPath, globPattern), {}, function() {
-            require('./' + taskName)()
-        })
+        watch(srcPath, {}, () => gulp.start(taskName))
     })
 }
 
