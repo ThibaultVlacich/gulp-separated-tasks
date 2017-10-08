@@ -10,13 +10,14 @@ const sourcemaps = require('gulp-sourcemaps')
 const tap        = require('gulp-tap')
 const uglify     = require('gulp-uglify')
 
-var browserifyTask = function() {
-    var paths = {
-        src: path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.javascripts.src),
-        dest: path.resolve(process.env.PWD, PATH_CONFIG.dest, PATH_CONFIG.javascripts.dest)
-    }
+let paths = {
+    src: path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.javascripts.src),
+    dest: path.resolve(process.env.PWD, PATH_CONFIG.dest, PATH_CONFIG.javascripts.dest)
+}
 
-    return gulp.src(paths.src, {read: false})
+gulp.task(
+    'browserify',
+    () => gulp.src(paths.src, {read: false})
         .pipe(tap(function (file) {
             file.contents = browserify(file.path, {debug: true})
                 .transform(babelify, {presets: ['es2015']})
@@ -27,7 +28,4 @@ var browserifyTask = function() {
         .pipe(gulpif(global.production, uglify()))
         .pipe(gulpif(!global.production, sourcemaps.write()))
         .pipe(gulp.dest(paths.dest))
-}
-
-gulp.task('browserify', browserifyTask)
-module.exports = browserifyTask
+)
